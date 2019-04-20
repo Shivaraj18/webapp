@@ -1,5 +1,5 @@
 pipeline {
-	agent any 
+	/*agent any 
 	stages {
 		stage ('one') {
 			steps {
@@ -36,5 +36,14 @@ pipeline {
 				}
 			}
 		}
-	}
+	}*/
+	
+	agent { docker { image 'maven:3.3.3' } }
+	    stages {
+		stage('build') {
+		    steps {
+			sh 'mvn --version'
+		    }
+		}
+	    }
 }
